@@ -79,7 +79,7 @@ PROJ_NAME=$proj_name
 BUILD_LATEST_TAG="latest"
 BUILD_CURRENT_TAG=$version
 
-docker build -t \$AUTHOR/\$PROJ_NAME:\${BUILD_LATEST_TAG} -t \$AUTHOR/\$PROJ_NAME:\${BUILD_CURRENT_TAG} .
+docker build -t \$AUTHOR/\$PROJ_NAME:\${BUILD_LATEST_TAG} -t \$AUTHOR/\$PROJ_NAME:\${BUILD_CURRENT_TAG} \`dirname \$0\`
 EOF
 
 cat >> images/prod_env/build.sh<<EOF
@@ -90,7 +90,7 @@ PROJ_NAME=$proj_name
 BUILD_LATEST_TAG="latest"
 BUILD_CURRENT_TAG=$version
 
-docker build -t \$AUTHOR/\${PROJ_NAME}_prod:\${BUILD_LATEST_TAG} -t \$AUTHOR/\${PROJ_NAME}_prod:\${BUILD_CURRENT_TAG} .
+docker build -t \$AUTHOR/\${PROJ_NAME}_prod:\${BUILD_LATEST_TAG} -t \$AUTHOR/\${PROJ_NAME}_prod:\${BUILD_CURRENT_TAG} \`dirname \$0\`
 EOF
 
 cat >> kubernetes/builder.yaml<<EOF
